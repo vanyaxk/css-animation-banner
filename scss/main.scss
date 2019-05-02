@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: url('../images/wp1895685.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gugi', cursive;
+}
+
+.banner {
+    width: 60%;
+    padding: 20px;
+    min-height: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    .banner-part {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        transform: translateY(-250px);
+        
+        h2, p {
+            flex-grow: 1;
+            text-align: center; 
+        }
+
+        p {
+            color: #2B67BA;
+            font-size: 2em;
+        }
+
+        &:first-of-type {
+
+            animation: goDown 2s ease-in-out forwards;
+
+            h2 {
+                animation: goLeft 1s 4s ease-out forwards,
+                disappearLeft 2s 8s ease-in forwards;
+            }
+
+            p {
+                animation: goRight 1s 4s ease-out forwards,
+                            colorOne 1s 4s ease-out forwards,
+                            rotateDisappearLeft 2s 8s ease-in forwards;
+            }
+
+        }
+
+        &:nth-of-type(2) {
+            animation: goDown 2s 1s ease-in-out forwards;
+
+            h2 {
+                animation: goLeft 1s 5s ease-out forwards,
+                disappearRight 2s 8s ease-in forwards;
+            }
+
+            p {
+                animation: goRight 1s 5s ease-out forwards,
+                            colorTwo 1s 5s ease-out forwards,
+                            rotateDisappearRight 2s 8s ease-in forwards;
+            }
+        }
+
+        &:nth-of-type(3) {
+            animation: goDown 2s 2s ease-in-out forwards;
+
+            h2 {
+                animation: goLeft 1s 6s ease-out forwards,
+                disappearLeft 2s 8s ease-in forwards;
+            }
+
+            p {
+                animation: goRight 1s 6s ease-out forwards,
+                            colorThree 1s 6s ease-out forwards,
+                            rotateDisappearLeft 2s 8s ease-in forwards;
+            }
+        }
+
+        &:last-of-type {
+            animation: goDown 2s 3s ease-in-out forwards;
+
+            h2 {
+                animation: goLeft 1s 7s ease-out forwards,
+                disappearRight 2s 8s ease-in forwards;
+            }
+
+            p {
+                animation: goRight 1s 7s ease-out forwards,
+                            colorFour 1s 7s ease-out forwards,
+                            rotateDisappearRight 2s 8s ease-in forwards;
+            }
+        }
+    }
+
+    .banner-second-part {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        h2 {
+            margin: 20px 0;
+            transform: scale(0);
+            text-align: center;
+            animation: showText 1s 9s ease-out forwards,
+                        rotateText 1s 13s ease forwards,
+                        transparentShrink 2s 14s ease forwards;
+
+            &:nth-of-type(2) {
+                font-size: .7em;
+                padding: 5px;
+                border: 1px dashed black;
+                animation: rotateToCenter 3s 10s ease-in-out forwards,
+                            rotateText 1s 13s ease forwards,
+                            transparentShrink 2s 14s ease forwards;
+            }
+        }
+    }
+}
+
+
+
+
+//animations
+
+
+//step 1
+
+@keyframes goDown {
+    0% {
+        transform: translateY(-250px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+//step 2
+
+@keyframes goLeft {
+    100% {
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes goRight {
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+
+//step 3 
+@keyframes colorOne {
+    100% { color: #3EA9E1}
+}
+
+@keyframes colorTwo {
+    100% { color: #5954A4 }
+}
+
+@keyframes colorThree {
+    100% { color: #C3382D }
+}
+
+@keyframes colorFour {
+    100% { color: #F8BB32 }
+}
+
+//step 4
+
+@keyframes disappearLeft {
+    0% { transform: translateX(-100px)};
+    100% { transform: translateX(-700px)};
+}
+
+@keyframes disappearRight {
+    0% {transform: translateX(-100px)}
+    100% {transform: translateX(400%)};
+}
+
+@keyframes rotateDisappearLeft {
+    0% { transform: translateX(100px) rotate(0deg)};
+    100% { transform: translateX(-800px) rotate(-360deg)}
+}
+
+@keyframes rotateDisappearRight {
+    0% { transform: translateX(100px) rotate(0deg)};
+    100% { transform: translateX(400%) rotate(360deg)}
+}
+
+//step 5
+@keyframes showText {
+    100% { transform: scale(1) };
+}
+
+@keyframes rotateToCenter {
+    0% { transform: translate(-500px, -300px)};
+    50% { transform: translate(-150px, 0) };
+    100% { transform: translate(0)};
+}
+
+@keyframes rotateText {
+    0% { transform: rotateX(0deg) };
+    100% { transform: rotateX(360deg) };
+}
+
+//step 6
+
+@keyframes transparentShrink {
+    0% { opacity: 1; transform: scale(1, 1); };
+
+    100% { opacity: 0; transform: scale(0.2, 1); };
+}
